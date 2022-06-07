@@ -1,0 +1,32 @@
+[
+  {
+    "pid": 210211,
+    "productName": "Maggi Noodles",
+    "quantity": 1,
+    "price": 40
+  },
+  {
+    "pid": 210212,
+    "productName": "Yippee Noodles",
+    "quantity": 1,
+    "price": 35
+  },
+  {
+    "pid": 210213,
+    "productName": "Wheat 1 kg",
+    "quantity": 1,
+    "price": 50
+  },
+  {
+    "pid": 210214,
+    "productName": "Rice 1 kg",
+    "quantity": 1,
+    "price": 30
+  },
+  {
+    "pid": 210215,
+    "productName": "Washing powder 1 kg",
+    "quantity": 1,
+    "price": 60
+  }
+]
