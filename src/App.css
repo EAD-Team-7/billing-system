@@ -4,7 +4,9 @@
   gap: 10px;
   padding: 1rem;
 }
-
+.text-design-fields {
+  margin-left: 5%;
+}
 table {
   width: 713.537px;
   margin-left: auto;

@@ -7,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import apiUrl from "./api/config";
-
+// import { Box, TextField } from "@mui/material";
 import {
   TableSortLabel,
   TableBody,
@@ -70,8 +70,8 @@ const App = () => {
           pid: data.barcode,
           productName: data.name,
           quantity: 1,
-          price: data.price
-        }
+          price: data.price,
+        };
         setProducts((prevState) => {
           return [...prevState, item];
         });
@@ -124,12 +124,28 @@ const App = () => {
   };
   return (
     <div className="app-container">
-      <h1>Date: {date}</h1>
+      <h1 style={{ color: "#1c474c" }}>Date: {date}</h1>
       <form onSubmit={handleSubmit}>
         <div className="userInput">
-          <UserInfo name="username" placeholder="Username" />
-          <UserInfo name="email" placeholder="Email" />
-          <UserInfo name="phonenumber" placeholder="Phone Number" />
+          <div className="text-fields-design">
+            <FormControl sx={{ flex: "row" }}>
+              <UserInfo name="username" placeholder="Username" />
+            </FormControl>
+          </div>
+          <div className="text-fields-design">
+            <FormControl>
+              <TextField
+                fullWidth
+                id="email"
+                label="email"
+                variant="outlined"
+              />
+              {/* <UserInfo name="email" placeholder="Email" /> */}
+            </FormControl>
+          </div>
+          <div className="text-fields-design">
+            <UserInfo name="phonenumber" placeholder="Phone Number" />
+          </div>
           <Button variant="contained">Submit</Button>
         </div>
       </form>
@@ -262,13 +278,14 @@ const App = () => {
             ))}
             <TableFooter>
               <TableRow>
-                <TableCell colSpan={4}>
-                  <Typography color={"black"}>Total : {total}</Typography>
-                </TableCell>
+                <TableCell colSpan={4}></TableCell>
               </TableRow>
             </TableFooter>
           </TableBody>
         </Table>
+      </Box>
+      <Box style={{ position: "fixed", bottom: "15px", right: "15px" }}>
+        <Typography color={"black"}>Total : {total}</Typography>
       </Box>
     </div>
   );
