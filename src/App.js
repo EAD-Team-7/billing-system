@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
-import UserInfo from "./components/form/UserInfo";
 import data from "./mock-data.json";
 import Table from "@mui/material/Table";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import apiUrl from "./api/config";
-// import { Box, TextField } from "@mui/material";
 import {
   TableSortLabel,
   TableBody,
@@ -127,46 +125,52 @@ const App = () => {
       <h1 style={{ color: "#1c474c" }}>Date: {date}</h1>
       <form onSubmit={handleSubmit}>
         <div className="userInput">
-          <div className="text-fields-design">
-            <FormControl sx={{ flex: "row" }}>
-              <UserInfo name="username" placeholder="Username" />
-            </FormControl>
-          </div>
-          <div className="text-fields-design">
-            <FormControl>
-              <TextField
-                fullWidth
-                id="email"
-                label="email"
-                variant="outlined"
-              />
-              {/* <UserInfo name="email" placeholder="Email" /> */}
-            </FormControl>
-          </div>
-          <div className="text-fields-design">
-            <UserInfo name="phonenumber" placeholder="Phone Number" />
-          </div>
-          <Button variant="contained">Submit</Button>
+          <FormControl>
+            <TextField
+              fullWidth
+              id="username"
+              label="Username"
+              variant="outlined"
+              sx={{ input: { color: "black" } }}
+            />
+          </FormControl>
+          <FormControl>
+            <TextField
+              fullWidth
+              id="email"
+              label="email"
+              variant="outlined"
+              sx={{ input: { color: "black" } }}
+            />
+          </FormControl>
+          <TextField
+            id="phonenumber"
+            label="Phone Number"
+            variant="outlined"
+            sx={{ input: { color: "black" } }}
+          />
+          <Button
+            variant="contained"
+            onClick={() =>
+              setTimeout(function () {
+                window.location.reload(false);
+              }, 3000)
+            }
+          >
+            Submit
+          </Button>
         </div>
       </form>
       <form onSubmit={handleAddFormSubmit} ref={formRef}>
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <Stack sx={{ flexDirection: "row" }} spacing={1}>
-              {/* <FormLabel>Enter product ID:</FormLabel> */}
-              {/* <Input
-              variant="outlined"
-              type="text"
-              name="pid"
-              required={true}
-              placeholder="Product ID: "
-            /> */}
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 variant="outlined"
                 options={searchProduct}
-                sx={{ width: 300 }}
+                sx={{ width: 300, input: { color: "black" } }}
                 renderInput={(params) => {
                   console.log(params);
                   return (
@@ -276,16 +280,20 @@ const App = () => {
                 </TableRow>
               </>
             ))}
-            <TableFooter>
-              <TableRow>
-                <TableCell colSpan={4}></TableCell>
-              </TableRow>
-            </TableFooter>
           </TableBody>
         </Table>
       </Box>
-      <Box style={{ position: "fixed", bottom: "15px", right: "15px" }}>
-        <Typography color={"black"}>Total : {total}</Typography>
+      <Box
+        style={{
+          position: "fixed",
+          bottom: "15px",
+          right: "15px",
+          fontSize: 20,
+        }}
+      >
+        <Typography color={"black"} variant="h1">
+          Total : {total}
+        </Typography>
       </Box>
     </div>
   );
