@@ -166,13 +166,7 @@ const App = () => {
             sx={{ input: { color: "black" } }}
           />
           <Button
-            variant="contained"
-            onClick={() =>
-              setTimeout(function () {
-                window.location.reload(false);
-              }, 3000)
-            }
-          >
+            variant="contained">
             Submit
           </Button>
         </div>
