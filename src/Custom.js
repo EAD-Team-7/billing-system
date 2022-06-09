@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, StyledEngineProvider } from "@mui/material";
 import App from "./App";
 import themes from "./themes";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
 const Custom = () => {
   return (
@@ -22,5 +23,6 @@ const Custom = () => {
 };
 
 // export default App;
-
-export default Custom;
+export default withAuthenticationRequired(Custom, {
+  onRedirecting: () => <>Loading..</>,
+});
