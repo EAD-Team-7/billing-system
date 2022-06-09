@@ -97,6 +97,19 @@ const App = () => {
     e.preventDefault();
     const data = new FormData(e.target);
     console.log(Object.fromEntries(data.entries()));
+    var prods = products.map((item) => {
+      return {
+        product: item.pid,
+        quantity: item.quantity,
+      };
+    });
+    console.log(prods);
+    axios.post(apiUrl + "/bill", {
+      bill_items: prods,
+      phoneNumber: data.get("phonenumber"),
+      name: data.get("username"),
+    });
+    setProducts([]);
   };
   const [searchProduct, setsearchProduct] = useState([]);
   const [query, setQuery] = useState("");
@@ -130,6 +143,7 @@ const App = () => {
               fullWidth
               id="username"
               label="Username"
+              name="username"
               variant="outlined"
               sx={{ input: { color: "black" } }}
             />
@@ -139,6 +153,7 @@ const App = () => {
               fullWidth
               id="email"
               label="email"
+              name="email"
               variant="outlined"
               sx={{ input: { color: "black" } }}
             />
@@ -147,6 +162,7 @@ const App = () => {
             id="phonenumber"
             label="Phone Number"
             variant="outlined"
+            name="phonenumber"
             sx={{ input: { color: "black" } }}
           />
           <Button
